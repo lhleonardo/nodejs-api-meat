@@ -1,0 +1,21 @@
+{
+  "name": "curso-node-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "5.4.17",
+    "restify": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.3.21",
+    "@types/restify": "^7.2.8",
+    "typescript": "^3.3.3333"
+  }
+}
