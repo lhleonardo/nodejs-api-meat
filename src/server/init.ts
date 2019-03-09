@@ -21,21 +21,10 @@ export default class ServerInitializer {
                 }));
 
                 this.application.use(restify.plugins.queryParser());
+                this.application.use(restify.plugins.bodyParser());
 
                 // chama o metodo para registrar cada uma das rotas
                 routes.forEach(route => route.register(this.application));
-
-                this.application.get('/info', (request, response, next) => {
-                    response.json({
-                        browser: request.userAgent(),
-                        method: request.method,
-                        url: request.href(),
-                        path: request.path(),
-                        query: request.query
-                    });
-
-                    return next();
-                });
 
                 this.application.listen(config.server.port, () => {
                     resolve(this.application);
