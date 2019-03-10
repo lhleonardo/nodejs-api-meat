@@ -4,6 +4,8 @@ import * as mongoose from "mongoose"
 import Router from "../common/router"
 import { config } from '../common/environment'
 
+import { mergePatchBodyParser } from "./merge-patch"
+
 export default class ServerInitializer {
 
     private application: restify.Server;
@@ -22,6 +24,7 @@ export default class ServerInitializer {
 
                 this.application.use(restify.plugins.queryParser());
                 this.application.use(restify.plugins.bodyParser());
+                this.application.use(mergePatchBodyParser)
 
                 // chama o metodo para registrar cada uma das rotas
                 routes.forEach(route => route.register(this.application));
@@ -45,7 +48,7 @@ export default class ServerInitializer {
         return this;
     }
 
-    public getServer() : restify.Server {
+    public getServer(): restify.Server {
         return this.application;
     }
 }
